@@ -15,16 +15,16 @@
 
 	<dependencies>
 		<!-- core dependencies -->
-		<dependency>
-			<groupId>org.kie</groupId>
-			<artifactId>kie-api</artifactId>
-      <scope>provided</scope>
-		</dependency>
-		<dependency>
+    <dependency>
+  			<groupId>org.kie</groupId>
+  			<artifactId>kie-api</artifactId>
+        <scope>provided</scope>
+  		</dependency>
+    <dependency>
 			<groupId>org.drools</groupId>
 			<artifactId>drools-compiler</artifactId>
-      <scope>provided</scope>
-		</dependency>
+        <scope>provided</scope>
+  		</dependency>
 		<dependency>
 			<groupId>org.kie</groupId>
 			<artifactId>kie-ci</artifactId>
@@ -41,12 +41,6 @@
 		<dependency>
 			<groupId>org.apache.cxf</groupId>
 			<artifactId>cxf-rt-transports-http</artifactId>
-			<version>2.7.11</version>
-      <scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.cxf</groupId>
-			<artifactId>cxf-rt-transports-http-jetty</artifactId>
 			<version>2.7.11</version>
       <scope>provided</scope>
 		</dependency>
@@ -86,12 +80,6 @@
       <scope>provided</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.eclipse.jetty</groupId>
-			<artifactId>jetty-webapp</artifactId>
-			<version>8.1.14.v20131031</version>
-      <scope>provided</scope>
-		</dependency>
-		<dependency>
 			<groupId>commons-collections</groupId>
 			<artifactId>commons-collections</artifactId>
       <scope>provided</scope>
@@ -113,7 +101,21 @@
 			<artifactId>logback-classic</artifactId>
       <scope>provided</scope>
 		</dependency>
-	</dependencies>
+
+    <!-- tests -->
+    <dependency>
+      <groupId>org.eclipse.jetty</groupId>
+      <artifactId>jetty-webapp</artifactId>
+      <version>8.1.14.v20131031</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.cxf</groupId>
+      <artifactId>cxf-rt-transports-http-jetty</artifactId>
+      <version>2.7.11</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
 
 	<build>
 		<plugins>
@@ -145,7 +147,12 @@
           <!-- lets run the war in a tomcat container -->
           <parentProfiles>containers-tomcat</parentProfiles>
 <!--
-          This option lets us run a static main() using spring and camel:
+          uncomment this line to use jetty instead:
+
+          <parentProfiles>containers-jetty</parentProfiles>
+-->
+<!--
+          This option lets us run a static main() using spring and camel instead of using a WAR:
 
 					<parentProfiles>containers-java.camel.spring</parentProfiles>
 -->
